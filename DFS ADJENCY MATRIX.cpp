@@ -1,5 +1,3 @@
-//Adjacency Matrix:  6 C13
-//using adj matrix -BFS(Que)
 #include<iostream>
 #include<stdlib.h>
 using namespace std;
