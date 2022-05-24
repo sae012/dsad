@@ -3,11 +3,12 @@
 #include<queue>
 #include<stack>
 using namespace std;
-//add the edge in graph
+
 void edge(vector<int>adj[],int u,int v){
   adj[u].push_back(v);
 }
-//function for bfs traversal
+
+//bfs
 void bfs(int s,vector<int>adj[],bool visit[]){
   queue<int>q;//queue in STL
   q.push(s);
@@ -16,7 +17,7 @@ void bfs(int s,vector<int>adj[],bool visit[]){
     int u=q.front();
     cout<<u<<" ";
     q.pop();
-//loop for traverse
+//traverse
     for(int i=0;i<adj[u].size();i++){
       if(!visit[adj[u][i]]){
         q.push(adj[u][i]);
@@ -25,7 +26,7 @@ void bfs(int s,vector<int>adj[],bool visit[]){
     }
   }
 }
-//function for dfs traversal
+//dfs traversal
 void dfs(int s,vector<int>adj[],bool visit[]){
   stack<int>stk;//stack in STL
   stk.push(s);
@@ -34,7 +35,7 @@ void dfs(int s,vector<int>adj[],bool visit[]){
     int u=stk.top();
     cout<<u<<" ";
     stk.pop();
-//loop for traverse
+//traverse
     for(int i=0;i<adj[u].size();i++){
       if(!visit[adj[u][i]]){
         stk.push(adj[u][i]);
@@ -43,30 +44,29 @@ void dfs(int s,vector<int>adj[],bool visit[]){
     }
   }
 }
-//main function
 int main(){
-  vector<int>adj[7];//vector of array to store the graph
-  bool visit[7];//array to check visit or not of a node
-  //initially all node are unvisited
+  vector<int>adj[7];
+  bool visit[7];
+  
   for(int i=0;i<7;i++){
     visit[i]=false;
   }
-  //input for edges
+ 
   edge(adj,1,2);
   edge(adj,1,3);
   edge(adj,3,6);
   edge(adj,2,4);
   edge(adj,2,5);
   cout<<"BFS traversal is"<<"  ";
-  //call bfs funtion
-  bfs(1,adj,visit);//1 is a starting point
+  
+  bfs(1,adj,visit);
   cout<<endl;
-  //again initialise all node unvisited for dfs
+  
   for(int i=0;i<7;i++){
     visit[i]=false;
   }
   cout<<"DFS traversal is"<<"  ";
-  //call dfs function
+  
   dfs(1,adj,visit);//1 is a starting point
 }
 
